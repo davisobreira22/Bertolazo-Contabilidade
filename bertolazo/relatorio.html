@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-nU14brUcp6StFntEOOEBvcJm4huWjB0OcIeQ3fltAfSmuZFrkAif0T+UtNGlKKQv" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <title>Relatorio</title>
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+        body {
+            background-color: #92b9cd;
+            min-height: 100vh;
+        }
+
+        .container {
+             
+           margin-top: 10%;
+            padding: 10px;
+            background-color: #f8f8f2;
+            border-radius: 5px;
+            border-color: #007bff;
+            
+        }
+ 
+        .container-2 {
+            margin-top: 10%;
+            padding: 9px;
+            background-color: #f8f8f2;
+            border-radius: 5px;
+          }
+   
+        
+
+        canvas {
+            margin-top: 20px;
+        }
+
+        
+        .edit-icon {
+            cursor: pointer;
+            color: #007bff;
+        }
+ 
+        
+        header{
+
+        position:fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.6s;
+        padding: 40px 100px;
+        z-index: 100000;
+
+        }
+        header.sticky {
+
+        padding: 5px 100px;
+        background-color: #fff;
+        }
+        header .logo{
+        position: relative;
+        font-weight: 700;
+        color: #474747;
+        text-decoration: none;
+
+        text-transform: uppercase;
+        
+        transition: 0.6s;
+        }
+
+        header ul{
+
+
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        header ul li{
+
+        position: relative;
+        list-style: none;
+        }
+        header ul li a{
+
+        position: relative;
+        margin: 0px 15px;
+        text-decoration: none;
+        color: #000000;
+        letter-spacing: 2px;
+        font-weight: 500px;
+        transition: 0.6s;
+        }
+
+
+
+        header.sticky .logo
+        header.sticky ul li a {
+
+        color: #000;
+
+        } 
+
+       
+
+    
+.login-container{
+    margin-top: 18%;
+            display: flex;
+            padding: 4%;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f8f2;
+            border-radius: 5%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+            
+}
+
+.editable {
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 14px;
+        outline: none;
+    }
+
+    .editable:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+table {
+          
+            border-collapse: collapse;
+            margin-top: 45px;
+            width: 60%;
+            float: left;
+            margin-bottom: 50px;
+            
+        }
+
+        table, th, td {
+            border: 2px solid #ccc;
+           
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .button-container {
+            float: left;
+            width: 40%;
+            text-align: left;
+        }
+
+        .search-container {
+            
+            align-items: center;
+            margin: 10px;
+            
+        }
+
+            .search-input {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 30%;
+            margin-right: 10%;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+            flex: 1;
+             
+            
+        }
+        .search-button{
+
+      background-color: #6087b0;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+       
+       
+        }
+
+.back-button{
+
+    background-color: #6087b0;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 5%;
+}
+
+.edit-button{
+    background-color: #6087b0;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5%;
+      
+}
+
+.print-button{
+
+    background-color: #6087b0;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5%;
+       
+}
+.save-button{
+
+    background-color: #2a9d8f;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+        display: inline-block;
+      
+    
+       
+  
+      
+}
+
+.cancel-button{
+
+
+    background-color: #e76f51;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+        display: inline-block;
+       
+      
+
+}
+.save-container{
+    
+    justify-content: center;
+    margin: 30px;
+     
+}
+
+      
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Bertolazo Contabilidade</a>
+        <ul> 
+        
+        <li><a href="homee.html"><i class="fi fi-rr-home"></i></a></li>
+        <li><a href="cadastrar2.html"> Cadastrar Empresa </a></li>
+        <li><a href="atualizarP1.html"> Atualizar </a></li>
+        <li><a href="cadastro-financeiro.html"> Serviços</a></li>
+        <li><a href="relatorio.html"> Relatório </a></li>
+       
+
+    
+    </header> 
+  
+  
+    <div class="login-container"> 
+
+        
+       
+        <table>
+            <tr>
+                <th>Nome da empresa</th>
+                <th>CNPJ</th>
+                <th>Situação</th>
+                <th>Data de empréstimo</th>
+                <th>Valor do empréstimo</th>
+            </tr>
+            <!-- Adicione mais linhas conforme necessário -->
+            <tr>
+                <td>Mecanica Simas</td>
+                <td>13.147.896/0001-82</td>
+                <td>Em dia</td>
+                <td>10/02/2023</td>
+                <td>R$ 300.000,00 </td>
+            </tr>
+            <tr>
+                <td>Padaria da Berenice</td>
+                <td>20.698.031/0012-65</td>
+                <td>Em atraso: 78 dias</td>
+                <td>15/03/2023</td>
+                <td>R$ 20.000,00 </td>
+                
+            </tr>
+            <tr>
+                <td>Mercado zn</td>
+                <td>15.214.763/1470-87</td>
+                <td>Em dia</td>
+                <td>10/04/2023</td>
+                <td>R$ 15.560,25 </td>
+            </tr>
+            <tr>
+                <td>Costuraria V2</td>
+                <td>55.463.135/0009-73</td>
+                <td>Em atraso: 82 dias</td>
+                <td>10/04/2023</td>
+                <td>R$ 50.000,00</td>
+            </tr>
+            <tr>
+                <td>Alozns</td>
+                <td>77.364.128/6974-31</td>
+                <td>Em dia</td>
+                <td>14/05/2023</td>
+                <td>R$ 60.550.99 </td>
+            </tr>
+            <tr>
+                <td>Anaytec</td>
+                <td>12.301.458/0093.22</td>
+                <td>Em dia</td>
+                <td>18/05/2023</td>
+                <td>R$ 90.000.00</td>
+            </tr>
+            <tr>
+                <td>Razer</td>
+                <td>28.897.215/8879.45</td>
+                <td>Em dia</td>
+                <td>21/06/2023</td>
+                <td>R$ 40.000,00 </td>
+            </tr>
+            <!-- Continue adicionando linhas conforme necessário -->
+        </table>
+
+        <div class="button-container">
+
+            <div class="search-container"> 
+
+                <input type="text" class="search-input" placeholder="Pesquisar...">
+                <button class="search-button">Buscar</button>
+                </div>
+
+                <div class="save-container">
+
+                    <button id="saveButton" class="save-button" style="display: none;" onclick="salvarEdicao()" disabled>Salvar</button>
+                    <button id="cancelButton" class="cancel-button" style="display: none;" onclick="cancelarEdicao()" disabled>Cancelar</button>
+        
+                </div>
+                
+           
+            <button class="back-button" onclick="window.history.back()">Voltar</button>
+            <button class="edit-button" onclick="habilitarEdicao()">Editar</button>
+            <button class="print-button" onclick="imprimirTela()">Imprimir Tela</button>
+
+             
+            
+            
+        </div>
+
+       
+        
+  
+    
+</div>
+    <!-- Outros gráficos aqui, se necessário -->
+
+
+    
+
+    
+<script>
+     window.addEventListener("scroll", function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+
+        })
+        var vetoredicao = [];
+    
+    function habilitarEdicao() {
+
+        var celulas = document.querySelectorAll("table tr:not(:first-child) td");
+        vetoredicao = [];
+
+        celulas.forEach(function(cell) {
+            vetoredicao.push(cell.textContent);
+            var input = document.createElement("input");
+            input.setAttribute("type", "text");
+            input.setAttribute("value", cell.textContent);
+            input.classList.add("editable");
+            cell.innerHTML = "";
+            cell.appendChild(input);
+        });
+
+        document.querySelector(".save-button").disabled = false;
+        document.querySelector(".cancel-button").disabled = false;
+        document.querySelector(".edit-button").disabled = true;
+
+         document.getElementById("saveButton").style.display = "inline-block";
+         document.getElementById("cancelButton").style.display = "inline-block";
+
+         
+    }
+
+    function salvarEdicao() {
+        var celulas = document.querySelectorAll("table tr:not(:first-child) td");
+        var changes = [];
+
+        celulas.forEach(function(cell, index) {
+            var input = cell.querySelector("input");
+            if (input.value !== vetoredicao[index]) {
+                changes.push(`Campo: ${vetoredicao[index]} passa a valer = ${input.value}`);
+                cell.textContent = input.value;
+            } else {
+                cell.textContent = vetoredicao[index];
+            }
+        });
+
+        if (changes.length > 0) {
+            const message = "Alterações realizadas:\n" + changes.join("\n");
+            alert(message);
+        } else {
+            alert("Nenhuma alteração realizada.");
+            
+        }
+
+        vetoredicao = [];
+        document.querySelector(".edit-button").disabled = false;
+        document.querySelector(".save-button").disabled = true;
+        document.querySelector(".cancel-button").disabled = true;
+
+        document.getElementById("saveButton").style.display = "none";
+    document.getElementById("cancelButton").style.display = "none";
+    }
+
+    function cancelarEdicao() {
+        var celulas = document.querySelectorAll("table tr:not(:first-child) td");
+
+        celulas.forEach(function(cell, index) {
+            var input = cell.querySelector("input");
+            input.value = vetoredicao[index];
+            cell.textContent = vetoredicao[index];
+        });
+
+        vetoredicao = [];
+        document.querySelector(".edit-button").disabled = false;
+        document.querySelector(".save-button").disabled = true;
+        document.querySelector(".cancel-button").disabled = true;
+
+         document.getElementById("saveButton").style.display = "none";
+    document.getElementById("cancelButton").style.display = "none";
+
+     
+    }
+     // Função para realizar a pesquisa na tabela
+     function buscarNaTabela() {
+        var termoPesquisa = document.querySelector(".search-input").value.toLowerCase();
+        var linhasTabela = document.querySelectorAll("table tr");
+
+        linhasTabela.forEach(function (linha, index) {
+            if (index === 0) {
+                return; // Pula a primeira linha (cabeçalho da tabela)
+            }
+
+            var celulas = linha.querySelectorAll("td");
+            var encontrou = false;
+
+            celulas.forEach(function (celula) {
+                if (celula.textContent.toLowerCase().includes(termoPesquisa)) {
+                    encontrou = true;
+                }
+            });
+
+            if (encontrou) {
+                linha.style.display = "";
+            } else {
+                linha.style.display = "none";
+            }
+        });
+    }
+
+    // Adicione um ouvinte de evento para o botão "Buscar"
+    document.querySelector(".search-button").addEventListener("click", buscarNaTabela);
+
+    // Adicione um ouvinte de evento para a tecla "Enter" no campo de pesquisa
+    document.querySelector(".search-input").addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+            buscarNaTabela();
+        }
+    });
+    
+
+      function imprimirTela() {
+        // Oculta o botão de impressão para evitar que seja impresso
+       
+
+        // Cria uma cópia da tabela
+        var tabelaImprimir = document.querySelector("table").cloneNode(true);
+
+        // Cria um novo documento para impressão
+        var janelaImpressao = window.open('', '', 'width=800,height=600');
+        janelaImpressao.document.open();
+
+        // Adiciona a tabela à janela de impressão
+        janelaImpressao.document.write('<html><head><title>Impressão</title></head><body>');
+        janelaImpressao.document.write('<h1>Relatório</h1>');
+        janelaImpressao.document.write(tabelaImprimir.outerHTML);
+        janelaImpressao.document.write('</body></html>');
+        janelaImpressao.document.close();
+
+        // Imprime o documento
+        janelaImpressao.print();
+
+        // Fecha a janela de impressão
+        janelaImpressao.close();
+
+        // Exibe novamente o botão de impressão
+         
+    }
+     
+</script>
+</body>
+</html>

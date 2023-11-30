@@ -1,0 +1,166 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('URL_DA_SUA_FONT'); /* Substitua 'URL_DA_SUA_FONT' pelo caminho correto para o arquivo de fonte Montserrat. */
+}
+@import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #92b9cd;
+    min-height: 200vh;
+}
+
+.login-container {
+    margin-top: 18%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Corrigido para 'flex-end' para alinhar à direita. */
+    background-color: #f8f8f2;
+    border-radius: 5%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 100px;
+    z-index: 100000;
+}
+
+header.sticky {
+    padding: 5px 100px;
+    background-color: #fff;
+}
+
+header .logo {
+    position: relative;
+    font-weight: 700;
+    color: #474747;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.6s;
+}
+
+header ul {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    position: relative;
+    list-style: none;
+}
+
+header ul li a {
+    position: relative;
+    margin: 0px 15px;
+    text-decoration: none;
+    color: #000000;
+    letter-spacing: 2px;
+    font-weight: 500; /* Removido o 'px' extra aqui. */
+    transition: 0.6s;
+}
+
+header.sticky .logo,
+header.sticky ul li a {
+    color: #000;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+}
+
+.login-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+}
+
+.edit-button{
+    background-color: #6087b0;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 40%;
+}
+
+button.submit{
+    background-color: #55a630;
+    color: #fff;
+    padding: 10px 20px;
+   
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 30%;
+
+
+}
+button.cancelar{
+    background-color: #bc4749;
+    color: #fff;
+    padding: 10px 20px;
+    
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+
+
+}
+
+
+ 
+ h2{
+ 
+font-size: 150%;
+  
+ }
+ 
+ h1{
+    margin-top: 25%;
+     margin-bottom: 25%;
+    margin-right: 20%;
+    font-size: 200%;
+    
+ }
+ 
+
+button.back-button {
+    background-color: #6087b0;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 40%;
+    
+}
+
+.form{
+
+margin-top: 10%;
+float: right;
+   
+}

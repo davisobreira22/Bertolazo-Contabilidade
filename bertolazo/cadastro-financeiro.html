@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="cadastrar2.css">
+     
+    <link rel="stylesheet" href="cadastrar2.css">
+    <title>Serviços</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Bertolazo Contabilidade</a>
+        <ul> 
+            <li><a href="homee.html"><i class="fi fi-rr-home"></i></a></li>
+            <li><a href="cadastrar2.html"> Cadastrar Empresa </a></li>
+            <li><a href="atualizarP1.html"> Atualizar </a></li>
+            <li><a href="cadastro-financeiro.html"> Serviços</a></li>
+            <li><a href="relatorio.html"> Relatório </a></li>
+        </ul>
+    </header> 
+    <div class="login-container">
+        <h2>SERVIÇOS</h2>
+        <form action="#">
+            <div class="dropdown">
+                 
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownButton">
+                    Selecionar Empresa
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Adidas</a></li>
+                  <li><a class="dropdown-item" href="#">Mecanica Simas</a></li>
+                  <li><a class="dropdown-item" href="#">Abobora Verdurão</a></li>
+                  <li><a class="dropdown-item" href="#">Margarida Floricultura</a></li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <label for="Servico">Tipo de Serviço</label>
+                <input type="text" id="Servico" name="servico" required>
+            </div>
+             
+            
+
+            <div class="form-group">
+                <label for="Valor">Valor</label>
+                <input type="text" id="Valor" name="Valor" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="Data">Data </label>
+                <input type="datetime-local" id="Data" name="data" required>
+            </div>
+
+            <div class="form-group">
+                <button class="back-button" onclick="window.history.back()">Voltar</button>
+                <button class="button" data-toggle="modal" data-target="#successModal">Confirmar</button> 
+            </div>
+        </form>
+    </div>
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Cadastro concluído com sucesso</h5>
+                    <button type="button" class="close close-button" data-dismiss="modal" aria-label="Fechar">
+                        <i class="fi fi-rr-circle-xmark"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Empresa cadastrada com sucesso.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript">
+          $.noConflict();
+    window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const successModal = new bootstrap.Modal(document.getElementById("successModal"));
+
+
+            // Adicione este código para fechar o modal ao clicar no botão "Fechar"
+            document.querySelector("#successModal .close-button").addEventListener("click", function () {
+                successModal.hide();
+            });
+
+            // Adicione este código após a submissão bem-sucedida do formulário
+            document.querySelector(".button").addEventListener("click", function (event) {
+                // Impede o envio real do formulário (substitua por seu código de envio)
+                event.preventDefault();
+
+                // Mostra o modal de sucesso
+                successModal.show();
+            });
+
+            // Adicione este código para atualizar o texto do botão de dropdown com a opção selecionada
+            document.querySelectorAll(".dropdown-item").forEach(function(item) {
+                item.addEventListener("click", function() {
+                    document.getElementById("dropdownButton").textContent = item.textContent;
+                });
+            });
+
+           
+        });
+</script>
+</html>

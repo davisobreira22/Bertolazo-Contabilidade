@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-thin-straight/css/uicons-thin-straight.css'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="atualizarP1.css">
+    <title>Atualizar Empresa</title>
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Bertolazo Contabilidade</a>
+        <ul>
+            <li><a href="homee.html"><i class="fi fi-rr-home"></i></a></li>
+            <li><a href="cadastrar2.html"> Cadastrar Empresa </a></li>
+            <li><a href="atualizarP1.html"> Atualizar </a></li>
+            <li><a href="cadastro-financeiro.html"> Serviços </a></li>
+            <li><a href="relatorio.html"> Relatório </a></li>
+        </ul>
+    </header>
+    <div class="login-container">
+        <h1>Atualizar empresa</h1>
+        <div class="form">
+            <h2>DIGITE O NOME DA EMPRESA</h2>
+            <!-- Campo de entrada para o nome da empresa com evento 'oninput' -->
+            <input class="nome" placeholder="" required type="text" oninput="filtrar(this.value)">
+            <h2 id="infoempresa"></h2>
+            <div class="accordion" id="accordionExample">
+                <!-- Item da empresa 1 -->
+                <div class="accordion-item" data-nome="Adidas">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Adidas
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body" id="empresa-0">
+                            <strong>Adidas</strong> <br>
+                            <span class="cnpj">CNPJ: 13.147.896/0001-82</span> <br>
+                            <span class="endereco">Endereço: Av. Costa e Silva Shopping Cataratas</span><br>
+                            <span class="email">Email: adidascomercial@gmail.com</span><br>
+                            <span class="status" id="status" name="status">Situação: </span>
+                        </div>
+                        <button class="edit-button" onclick="showEditForm(0)">Editar</button>
+                        <div id="edit-form-0" class="edit-form" style="display: none">
+                            <h2>Editar</h2>
+                            <form onsubmit="updateData(0); return false;">
+                                <label for="edit-nome-0">Nome da Empresa</label>
+                                <input type="text" id="edit-nome-0" name="edit-nome" value="Adidas"><br>
+                                <label for="edit-cnpj-0">CNPJ</label>
+                                <input type="text" id="edit-cnpj-0" name="edit-cnpj" value="13.147.896/0001-82"><br>
+                                <label for="edit-endereco-0">Endereço</label>
+                                <input type text id="edit-endereco-0" name="edit-endereco" value="Av. Costa e Silva Shopping Cataratas"><br>
+                                <label for="edit-email-0">Email</label>
+                                <input type text id="edit-email-0" name="edit-email" value="adidascomercial@gmail.com"><br>
+                                <label for="edit-status-0">Status de Pagamento</label>
+                                <input type="checkbox" id="edit-status-0" name="edit-status" value="Em Dia" checked> Em Dia<br>
+                                <input type="checkbox" id="edit-status-1" name="edit-status" value="Em Atraso"  checked> Em Atraso<br>
+                                
+                                <button class="submit">Salvar</button>
+                                <button class="cancelar" onclick="cancelEdit(0)">Cancelar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Outros itens de empresa aqui -->
+                 
+                <button class="back-button" onclick="window.history.back()">Voltar</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+
+        window.addEventListener("scroll", function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+
+        })
+        function filtrar(companyName) {
+            var infoEmpresa = document.getElementById("infoempresa");
+            var accordionItems = document.querySelectorAll(".accordion-item");
+             
+            infoEmpresa.style.visibility = 'visible';
+        
+            for (var i = 0; i < accordionItems.length; i++) {
+                var item = accordionItems[i];
+                var nome = item.getAttribute("data-nome");
+                var description = item.querySelector(".accordion-body strong").textContent;
+        
+                // Converte todas as letras para minúsculas para tornar a pesquisa insensível a maiúsculas e minúsculas
+                var lowercaseCompanyName = companyName.toLowerCase();
+                var lowercaseNome = nome.toLowerCase();
+                var lowercaseDescription = description.toLowerCase();
+        
+                if (lowercaseNome.includes(lowercaseCompanyName) || lowercaseDescription.includes(lowercaseCompanyName)) {
+                    item.style.display = "block"; // Exibir o item correspondente
+                } else {
+                    item.style.display = "none"; // Ocultar itens não correspondentes
+                }
+            }
+        
+            var foundItems = document.querySelectorAll(".accordion-item[style='display: block;']");
+            if (foundItems.length === 0) {
+                infoEmpresa.textContent = "Empresa não encontrada";
+            } else {
+                infoEmpresa.textContent = ""; // Limpar a mensagem de empresa não encontrada
+            }
+        }
+        
+        function showEditForm(index) {
+            const editForm = document.querySelector(`#edit-form-${index}`);
+            editForm.style.display = 'block';
+        }
+        
+        function cancelEdit(index) {
+            const editForm = document.querySelector(`#edit-form-${index}`);
+            editForm.style.display = 'none';
+        }
+        
+        function updateData(index) {
+            var editForm = document.querySelector(`#edit-form-${index}`);
+            var celulas = editForm.querySelectorAll("input");
+            var changes = [];
+            var vetoredicao = [];
+            var statusElement = document.querySelector('input[name="edit-status"]:checked');
+            var statusValue = statusElement ? statusElement.value : '';
+            var statusElement = document.querySelector('input[name="edit-status"]:checked');
+    var statusValue = statusElement ? statusElement.value : '';
+
+    // Atualize a div com o id "empresa-0" com o novo status
+    var empresaDiv = document.getElementById('empresa-' + index);
+    var statusSpan = empresaDiv.querySelector('.status');  // Alterado para selecionar pela classe
+
+    // Se a classe status não existir dentro da div empresa-0, crie-a
+    if (!statusSpan) {
+        statusSpan = document.createElement('span');
+        statusSpan.className = 'status';
+        empresaDiv.appendChild(statusSpan);
+    }
+
+    // Atualize o conteúdo do status
+    statusSpan.textContent = 'Status: ' + statusValue;
+
+        
+            celulas.forEach(function(input, inputIndex) {
+                var originalValue = vetoredicao[inputIndex];
+                if (input.value !== originalValue) {
+                    changes.push(`Campo: ${originalValue} passa a valer = ${input.value}`);
+                    // Atualiza o vetor de edição com os novos valores
+                    vetoredicao[inputIndex] = input.value;
+                }
+            });
+        
+            if (changes.length > 0) {
+                const message = "Alterações realizadas:\n" + changes.join("\n");
+                alert(message);
+        
+                // Atualize os elementos do DOM no accordion com os novos valores
+                var nomeEmpresaElement = document.querySelector(`#empresa-${index} strong`);
+                var cnpjElement = document.querySelector(`#empresa-${index} .cnpj`);
+                var enderecoElement = document.querySelector(`#empresa-${index} .endereco`);
+                var emailElement = document.querySelector(`#empresa-${index} .email`);
+        
+                if (nomeEmpresaElement) {
+                    nomeEmpresaElement.textContent = vetoredicao[0]; // O nome é o primeiro campo no formulário
+                }
+                if (cnpjElement) {
+                    cnpjElement.textContent = "CNPJ: " + vetoredicao[1]; // O CNPJ é o segundo campo no formulário
+                }
+                if (enderecoElement) {
+                    enderecoElement.textContent = "Endereço: " + vetoredicao[2]; // O endereço é o terceiro campo no formulário
+                }
+                if (emailElement) {
+                    emailElement.textContent = "Email: " + vetoredicao[3]; // O email é o quarto campo no formulário
+                }
+            } else {
+                alert("Nenhuma alteração realizada.");
+            }
+        
+            editForm.style.display = 'none'; // Fecha o formulário de edição
+        }
+    </script>
+</body>
+</html>

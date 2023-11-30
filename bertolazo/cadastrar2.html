@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="cadastrar2.css">
+    <title>Cadastrar Empresas</title>
+   
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">Bertolazo Contabilidade</a>
+        <ul> 
+        
+        <li><a href="homee.html"><i class="fi fi-rr-home"></i></a></li>
+        <li><a href="cadastrar2.html"> Cadastrar Empresa </a></li>
+        <li><a href="atualizarP1.html"> Atualizar </a></li>
+        <li><a href="cadastro-financeiro.html"> Serviços</a></li>
+        <li><a href="relatorio.html"> Relatório </a></li>
+        </ul>
+
+        
+
+    </header> 
+      <div class="login-container">
+        <h2>CADASTRAR EMPRESA</h2>
+        <form action="#">
+            <div class="form-group">
+                <label for="username">Empresa</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+           
+            <div class="form-group">
+                <label for="text">CNPJ</label>
+                <input type="text" id="CNPJ" name="CNPJ" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Endereço">Endereço</label>
+                <input type="text" id="Endereço" name="Endereço" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="Email" name="Email" required>
+            </div>
+
+            <div class="form-group">
+                <button class="back-button" onclick="window.history.back()">Voltar</button>
+                <button class="button" data-toggle="modal" data-target="#successModal">Confirmar</button> 
+            </div>
+        </form>
+            </div>
+            <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="successModalLabel">Cadastro concluído com sucesso</h5>
+                            <button type="button" class="close close-button" data-dismiss="modal" aria-label="Fechar">
+                                <i class="fi fi-rr-circle-xmark"></i>
+                            </button>
+                             
+                        </div>
+                        <div class="modal-body">
+                            Empresa cadastrada com sucesso.
+                        </div>
+                         
+                    </div>
+                </div>
+            </div>
+            
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+ 
+<script type="text/javascript">
+    window.addEventListener("scroll", function(){
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0);
+
+    })
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const successModal = new bootstrap.Modal(document.getElementById("successModal"));
+
+        // Adicione este código para fechar o modal ao clicar no botão "Fechar"
+        document.querySelector("#successModal .close").addEventListener("click", function () {
+            successModal.hide();
+        });
+
+        // Adicione este código após a submissão bem-sucedida do formulário
+        document.querySelector(".button").addEventListener("click", function (event) {
+            // Impede o envio real do formulário (substitua por seu código de envio)
+            event.preventDefault();
+
+            // Mostra o modal de sucesso
+            successModal.show();
+        });
+    });
+</script>
+
+</body>
+</html>

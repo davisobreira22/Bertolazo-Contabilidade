@@ -1,0 +1,194 @@
+@import url('https://cdn-uicons.flaticon.com/2.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+ 
+
+  .login-container {
+      margin-top: 18%;
+      display: flex;
+      padding: 4%;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f8f2;
+      border-radius: 5% ;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);  
+  }
+
+   h2{
+   margin-right: 20%;
+   font-size: 25px;
+   }
+   
+   label {
+
+    margin-top: 5%;
+   }
+
+  .login-container input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 30px;
+  }
+
+  .form-group input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+  }
+  
+  /* Estilo para o campo de entrada quando está em foco (focused) */
+  .form-group input[type="datetime-local"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+  .login-container button {
+      background-color: #6087b0;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-top: 5%;
+      cursor: pointer;
+      
+  }
+
+  .button {
+
+    margin-left: 27%;
+  }
+  .login-container button:hover {
+      background-color:  #005f7f;
+  }
+
+.container-text-center{
+
+  background-color:  #0A0A0A;
+  vertical-align: center;
+  max-height: 160px
+}
+ 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+ 
+
+
+body{
+
+background-color: #92b9cd;
+min-height: 200vh;
+
+}
+ 
+header{
+
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 100px;
+    z-index: 100000;
+
+}
+header.sticky {
+
+    padding: 5px 100px;
+    background-color: #fff;
+}
+header .logo{
+    position: relative;
+    font-weight: 700;
+    color: #474747;
+    text-decoration: none;
+    
+    text-transform: uppercase;
+     
+    transition: 0.6s;
+}
+
+header ul{
+
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li{
+
+    position: relative;
+    list-style: none;
+}
+header ul li a{
+
+    position: relative;
+    margin: 0px 15px;
+    text-decoration: none;
+    color: #000000;
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: 0.6s;
+}
+
+
+ 
+header.sticky .logo
+header.sticky ul li a {
+
+color: #000;
+
+} 
+
+ /* Estilo do botão de fechar do modal */
+.close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #000; /* Cor do ícone */
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0;
+}
+
+.close-button:focus {
+    outline: none;
+}
+.modal-content {
+    margin-top: 28%;
+    background-color: #fff; /* Cor de fundo do modal */
+    border-radius: 10px; /* Borda arredondada */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+.modal-title { 
+    font-size: 20px; /* Tamanho da fonte do título do modal */
+    color: #333; /* Cor do título */
+}
+
+.modal-body {
+    
+    font-size: 16px; /* Tamanho da fonte do corpo do modal */
+    color: #555; /* Cor do texto do corpo */
+}
+
+.modal-footer {
+    background-color: #f5f5f5; /* Cor de fundo do rodapé do modal */
+    border-top: none; /* Remove a borda superior do rodapé */
+    text-align: right; /* Alinha o conteúdo à direita */
+}
+ 
+  
